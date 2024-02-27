@@ -1,0 +1,15 @@
+{% extends "cp_ladder_theme/base.html" %}
+
+{% block content %}
+
+<div class="flex justify-center items-center h-screen">
+	<ul class="grid grid-cols-1 m-0 p-0 mx-auto gap-y-6">
+		{% include "leaderboard/components/school_label.html" with label="홍익대학교" %}
+		{% include "leaderboard/components/school_label.html" with label="이화여자대학교" %}
+		{% include "leaderboard/components/school_label.html" with label="서강대학교" %}
+		{% include "leaderboard/components/school_label.html" with label="숙명여자대학교" %}
+		{% include "leaderboard/components/school_label.html" with label="연세대학교" %}
+	</ul>
+</center>
+
+{% endblock %}
