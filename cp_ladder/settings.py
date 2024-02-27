@@ -44,8 +44,8 @@ INSTALLED_APPS = [
     'cp_ladder_theme',
     'django_browser_reload',
 
-
     'core',
+    'leaderboard',
 ]
 
 TAILWIND_APP_NAME = 'cp_ladder_theme'
