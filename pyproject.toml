@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "memedex-backend"
+name = "cp-ladder"
 version = "0.1.0"
 description = "Simple image uploader for personal purpose"
 authors = ["Jaeyeol Lee <rijgndqw012@gmail.com>"]

@@ -3,7 +3,7 @@
 ## Running from tmuxinator
 
 ```yml
-name: memedex
+name: cp_ladder
 root: ~/works/
 # This environment variable is used for neovim configuration 
 # (this ensures that opening html file is for django template)
@@ -13,14 +13,14 @@ windows:
   - editor:
       layout: main-vertical
       panes:
-        - cd ./memedex-backend/ && poetry shell
+        - cd ./cp-ladder/ && poetry shell
   - frontend:
       layout: main-vertical
       panes:
-        - cd ./memedex-backend/ 
+        - cd ./cp-ladder/ 
   - debugging:
       layout: main-vertical
       panes:
-        - cd ./memedex-backend/ && poetry run python manage.py runserver
-        - cd ./memedex-backend/ && poetry run python manage.py tailwind start
+        - cd ./cp-ladder/ && poetry run python manage.py runserver
+        - cd ./cp-ladder/ && poetry run python manage.py tailwind start
 ```
