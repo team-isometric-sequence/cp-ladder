@@ -1,3 +1,8 @@
-<li class="list-none w-72 py-4 rounded-2xl bg-teal-200 border-2 border-teal-500 font-bold text-center cursor-pointer hover:bg-teal-100">
-	{{ label }}
+<li class="list-none">
+	<a 
+		class="block w-72 py-4 rounded-2xl bg-teal-200 border-2 border-teal-500 font-bold text-center cursor-pointer hover:bg-teal-100"
+		href="{% url 'school-leaderboard' school %}"
+	>
+		{{ label }}
+	</a>
 </li>
