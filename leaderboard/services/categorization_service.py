@@ -1,4 +1,3 @@
-from typing import Optional
 from leaderboard.models import Problem, Tag, Tagging
 
 
@@ -7,14 +6,14 @@ def get_tag(tag_name: str) -> Tag:
     return tag
 
 
-def get_tagging(tag_id: int, problem_id: int) -> Tagging:
-    tagging, _ = Tagging.objects.get_or_create(tag_id=tag_id, problem_id=problem_id)
+def get_tagging(tag: Tag, problem: Problem) -> Tagging:
+    tagging, _ = Tagging.objects.get_or_create(tag=tag, problem=problem)
     return tagging
 
 
 def add_to_problem(tag_name: str, problem: Problem):
     tag = get_tag(tag_name)
-    tagging = get_tagging(tag.pk, problem.pk)
+    tagging = get_tagging(tag, problem)
 
     tagging.tag_name = tag_name
     tagging.save()
