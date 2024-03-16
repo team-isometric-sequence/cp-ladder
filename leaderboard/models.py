@@ -57,7 +57,7 @@ class Problem(models.Model):
     is_solved_by_hongik = models.BooleanField(verbose_name="홍익대학교 학생이 해결한 문제인지 여부", default=False)
     is_solved_by_ehwa = models.BooleanField(verbose_name="이화여자대학교 학생이 해결한 문제인지 여부", default=False)
     is_solved_by_sogang = models.BooleanField(verbose_name="서강대학교 학생이 해결한 문제인지 여부", default=False)
-    is_solved_bt_yonsei = models.BooleanField(verbose_name="연세대학교 학생이 해결한 문제인지 여부", default=False)
+    is_solved_by_yonsei = models.BooleanField(verbose_name="연세대학교 학생이 해결한 문제인지 여부", default=False)
     is_solved_by_sookmyeong = models.BooleanField(verbose_name="숙명여자대학교 학생이 해결한 문제인지 여부", default=False)
 
     created_at = models.DateTimeField(blank=True, auto_now_add=True, verbose_name="생성 시간")
