@@ -1,6 +1,6 @@
 from typing import TypedDict
 from time import sleep
-from operator import attrgetter
+from operator import itemgetter
 
 import requests
 
@@ -48,7 +48,7 @@ def update_solvedac_metric(query_string: str):
     metrics: list[ProblemMetric] = response.json()
     for metric in metrics:
         # Bypasses destructuring assignment
-        problem_id, level, title, solved_count, submission_rate, is_solvable, tags = attrgetter('problemId', 'level', 'titleKo', 'acceptedUserCount', 'averageTries', 'isSolavable', 'tags')(metric)
+        problem_id, level, title, solved_count, submission_rate, tags = itemgetter('problemId', 'level', 'titleKo', 'acceptedUserCount', 'averageTries', 'tags')(metric)
         problem = honor_farming_service.get_problem(problem_id)
          
         data = { 
