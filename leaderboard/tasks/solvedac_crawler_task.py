@@ -4,7 +4,7 @@ from operator import attrgetter
 
 import requests
 
-from leaderboard.services import honor_farming_service, categorization_serivce
+from leaderboard.services import honor_farming_service, categorization_service
 
 
 class TagSchema(TypedDict):
@@ -61,7 +61,7 @@ def update_solvedac_metric(query_string: str):
 
         honor_farming_service.update_problem(problem, **data)
         for t in tags:
-            tag = categorization_serivce.get_tag(t['key'])
-            tagging = categorization_serivce.get_tagging(tag.pk, problem_id)
-            categorization_serivce.update_tagging(tagging, problem)
+            tag = categorization_service.get_tag(t['key'])
+            tagging = categorization_service.get_tagging(tag, problem)
+            categorization_service.update_tagging(tagging, tag_name=t['key'])
 
