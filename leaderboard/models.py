@@ -1,7 +1,40 @@
+from dataclasses import dataclass
 from typing import TypedDict
 
 from django.db import models
 from django.utils.functional import cached_property
+
+
+@dataclass 
+class ProblemFilter:
+    allow_unranked: bool
+    school: str 
+    tag_name: str
+    order_by: str
+
+    @property
+    def order_by_tier_asc_query(self):
+        return 'order_by=tier_asc'
+
+    @property
+    def order_by_tier_desc_query(self):
+        return 'order_by=tier_desc'
+
+    @property
+    def order_by_solved_count_asc_query(self):
+        return 'order_by=solved_count_asc'
+
+    @property
+    def order_by_solved_count_desc_query(self):
+        return 'order_by=solved_count_desc'
+
+    @property
+    def order_by_submission_count_asc_query(self):
+        return 'order_by=submission_count_asc'
+
+    @property
+    def order_by_submission_count_desc_query(self):
+        return 'order_by=submission_count_desc'
 
 
 class ProblemFilterType(TypedDict):

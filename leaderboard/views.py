@@ -1,5 +1,6 @@
 from django.views.generic.base import TemplateView
 from django.core.paginator import Paginator
+from leaderboard.models import ProblemFilter
 
 from leaderboard.services.honor_farming_service import list_unsolved_problems, ProblemFilterType
 
@@ -30,8 +31,9 @@ class SchoolLeaderboardView(TemplateView):
 
         paginator = Paginator(problems, 50)
         page_obj = paginator.get_page(page_number)
+        filter = ProblemFilter(**query)
 
-        context = { 'school': school, 'query': query, 'page_obj': page_obj}
+        context = { 'school': school, 'query': filter, 'page_obj': page_obj}
 
         return context
 
