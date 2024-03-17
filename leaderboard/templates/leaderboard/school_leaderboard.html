@@ -1,0 +1,13 @@
+{% extends "cp_ladder_theme/base.html" %}
+
+{% block content %}
+	<div class="py-24">
+
+		{% include "leaderboard/components/leaderboard_filter.html" with query=query %}
+
+		{% include "leaderboard/components/leaderboard_table.html" with page_obj=page_obj %}
+
+		{% include "leaderboard/components/leaderboard_pagination.html" with page_obj=page_obj %}
+	</div>
+
+{% endblock %}
