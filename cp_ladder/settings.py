@@ -138,6 +138,12 @@ INTERNAL_IPS = [
     "127.0.0.1",
 ]
 
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.db.DatabaseCache",
+        "LOCATION": "twofourzero_cache",
+    }
+}
 
 Q_CLUSTER = {
     'name': 'DjangORM',
