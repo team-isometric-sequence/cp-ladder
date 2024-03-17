@@ -3,7 +3,7 @@
 		<div class="flex gap-1 rounded-2xl">
 			{% if filter.page_obj.has_previous %}
 				<a class="pagination"
-					href="?{{filter.previous_page_query}}">이전</a>
+					href="?{{filter.previous_page_query}}">prev</a>
 				</a>
 			{% endif %}
 
@@ -30,6 +30,12 @@
 
 			{% if filter.last_page_is_after_window %}
 				<a class="pagination" href="?{{filter.last_page_query}}">{{ filter.page_obj.paginator.num_pages }}</a>
+			{% endif %}
+
+			{% if filter.page_obj.has_next %}
+				<a class="pagination"
+					href="?{{filter.next_page_query}}">next</a>
+				</a>
 			{% endif %}
 		</div>
         {#% if page_obj.has_previous %#}
