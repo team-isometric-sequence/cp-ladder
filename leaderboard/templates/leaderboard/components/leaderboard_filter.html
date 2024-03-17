@@ -9,11 +9,12 @@
 			<div 
 				class="
 					btn
+					border-2
 					border-transparent
 					{% if 'tier' in query.order_by %}
-						bg-teal-400 text-white hover:bg-teal-300
+						border-teal-500 bg-teal-400 text-white hover:bg-teal-300
 					{% else %}
-						text-teal-500 bg-transparent hover:bg-teal-100
+						text-teal-500 bg-transparent border-gray-200 hover:bg-teal-100
 					{% endif %}	
 					text-lg
 					shadow-lg
@@ -40,17 +41,17 @@
 			<div 
 				class="
 					btn
-					border-transparent
+					border-2
 					{% if 'solved_count' in query.order_by %}
-						bg-teal-400 text-white hover:bg-teal-300
+						border-teal-500 bg-teal-400 text-white hover:bg-teal-300
 					{% else %}
-						text-teal-500 bg-transparent hover:bg-teal-100
+						text-teal-500 bg-transparent border-gray-200 hover:bg-teal-100
 					{% endif %}	
 					text-lg
 					shadow-lg
 				"
 			>
-				맞힌 사람 수
+				# of Accepted
 				
 				{% if 'solved_count' in query.order_by %}
 					<span class="block text-white">
@@ -71,17 +72,17 @@
 			<div 
 				class="
 					btn
-					border-transparent
+					border-2
 					{% if 'submission_count' in query.order_by %}
-						bg-teal-400 text-white hover:bg-teal-300
+						border-teal-500 bg-teal-400 text-white hover:bg-teal-300
 					{% else %}
-						text-teal-500 bg-transparent hover:bg-teal-100
+						text-teal-500 bg-transparent border-gray-200 hover:bg-teal-100
 					{% endif %}	
 					text-lg
 					shadow-lg
 				"
 			>
-				제출 수
+				# of Submission
 				
 				{% if 'submission_count' in query.order_by %}
 					<span class="block text-white">
