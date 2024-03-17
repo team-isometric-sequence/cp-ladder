@@ -1,0 +1,51 @@
+<div class="flex justify-center py-8">
+    <span class="step-links text-3xl">
+		<div class="flex gap-1 rounded-2xl">
+			{% if filter.page_obj.has_previous %}
+				<a class="pagination"
+					href="?{{filter.previous_page_query}}">이전</a>
+				</a>
+			{% endif %}
+
+			{% if filter.first_page_is_before_window %}
+				<a class="pagination" href="?{{filter.first_page_query}}">1</a>
+			{% endif %}
+
+			{% if filter.first_page_is_before_window %}
+				<span class="pagination">...</span>
+			{% endif %}
+
+
+			{% for page in filter.pagination_window %}
+				{% if page == filter.page_obj.number %}
+					<span class="pagination pagination-active">{{ page }}</span>
+				{% else %}
+					<a class="pagination" href="?order_by={{filter.order_by}}&page={{ page }}">{{ page }}</a>
+				{% endif %}
+			{% endfor %}
+
+			{% if filter.last_page_is_after_window %}
+				<span class="pagination" href="">...</span>
+			{% endif %}
+
+			{% if filter.last_page_is_after_window %}
+				<a class="pagination" href="?{{filter.last_page_query}}">{{ filter.page_obj.paginator.num_pages }}</a>
+			{% endif %}
+		</div>
+        {#% if page_obj.has_previous %#}
+		<!--
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ "page_obj.previous_page_number" }}">previous</a>
+        {#% endif %#}
+
+        <span class="current">
+            Page {{ "page_obj.number" }} of {{ "page_obj.paginator.num_pages" }}.
+        </span>
+
+        {#% if page_obj.has_next %#}
+            <a href="?page={{ "page_obj.next_page_number" }}">next</a>
+            <a href="?page={{ "page_obj.paginator.num_pages" }}">last &raquo;</a>
+		-->
+        {#% endif %#}
+    </span>
+</div>

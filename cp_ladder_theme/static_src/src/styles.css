@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.pagination {
+	@apply text-black bg-gray-100 px-6 py-4 rounded-2xl;
+}
+
+a.pagination:hover {
+	@apply bg-gray-200;
+}
+
+.pagination.pagination-active {
+	@apply bg-gray-300;
+}
