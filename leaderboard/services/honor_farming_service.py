@@ -43,10 +43,10 @@ def _filter_by_tag(query: QuerySet[Problem], tag_name):
     if tag_name == '': 
         return query 
 
-    tag = categorization_service.find_or_create_tag(tag_name)
+    tag = categorization_service.get_tag(tag_name)
 
     taggings = Tagging.objects.filter(tag=tag)
-    problem_ids = [tagging.problem_id for tagging in taggings]
+    problem_ids = taggings.values_list('problem_id', flat=True)
     return query.filter(id__in=problem_ids)
 
 def generate_filter_option(params: ProblemFilterType) -> list[str]:
