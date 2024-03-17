@@ -36,17 +36,13 @@ class ProblemFilter:
     def last_page_query(self):
         return f"page={self.page_obj.paginator.num_pages}&order_by={self.order_by}"
 
-    @property 
-    def current_query(self):
-        return f"page={self.page_obj.number}&order_by={self.order_by}"
-
     @property
     def previous_page_query(self):
-        return f"page={self.page_obj.previous_page_number}&order_by={self.order_by}"
+        return f"page={self.page_obj.previous_page_number()}&order_by={self.order_by}"
 
     @property
     def next_page_query(self):
-        return f"page={self.page_obj.next_page_number}&order_by={self.order_by}"
+        return f"page={self.page_obj.next_page_number()}&order_by={self.order_by}"
 
     @property 
     def pagination_window(self):
