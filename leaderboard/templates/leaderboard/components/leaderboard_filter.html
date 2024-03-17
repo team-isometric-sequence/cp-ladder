@@ -4,7 +4,7 @@
 	<div class="flex gap-4">
 		{#% filter for sovledac tier %#}
 		<a 
-			href="?{% if 'tier_desc' in query.order_by %}order_by=tier_asc{% else %}order_by=tier_desc{% endif %}"
+			href="?{% if 'tier_asc' in query.order_by %}order_by=tier_desc{% else %}order_by=tier_asc{% endif %}"
 		>
 			<div 
 				class="
