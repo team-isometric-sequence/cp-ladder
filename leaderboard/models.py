@@ -1,4 +1,12 @@
+from typing import TypedDict
 from django.db import models
+
+
+class ProblemFilterType(TypedDict):
+    allow_unranked: bool
+    school: str 
+    tag_name: str
+    order_by: str
 
 
 class BojUser(models.Model):

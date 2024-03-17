@@ -1,17 +1,8 @@
-from typing import TypedDict
-
 from django.db.models import QuerySet
 
-from leaderboard.models import BojUser, Problem, ProblemSolver, Tagging
+from leaderboard.models import BojUser, Problem, ProblemFilterType, ProblemSolver, Tagging
 
 from leaderboard.services import categorization_service
-
-
-class ProblemFilterType(TypedDict):
-    allow_unranked: bool
-    school: str 
-    tag_name: str
-    order_by: str
 
 
 def list_problems() -> QuerySet[Problem]:
