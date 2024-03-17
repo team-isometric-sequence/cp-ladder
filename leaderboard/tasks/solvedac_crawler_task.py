@@ -54,9 +54,9 @@ def update_solvedac_metric(query_string: str):
         data = { 
             'title': title,
             'tier': level,
+            'is_solvable': True if solved_count > 0 else False,
             'solved_count': solved_count,
             'submission_count': round(solved_count * submission_rate),
-            'is_solvable': is_solvable
         }     
 
         honor_farming_service.update_problem(problem, **data)
