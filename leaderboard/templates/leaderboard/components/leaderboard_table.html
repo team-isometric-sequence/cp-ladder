@@ -1,0 +1,37 @@
+{% load static %}
+<div class="overflow-x-auto">
+	<table class="table">
+		<thead>
+			<tr class="text-3xl font-extrabold text-black">
+				<th>Problem ID</th>
+				<th>Title</th>
+				<th>Solved</th>
+			</tr>
+		</thead>
+		<tbody>
+		{% for problem in page_obj.object_list %}
+			<tr class="text-2xl font-medium text-gray-700">
+				<td class="items-center gap-4">
+					<span class="float-left">
+						<img class="w-8 mr-4" src="{% static problem.badge_asset_path %}"/>
+					</span> 
+					<a href="https://www.acmicpc.net/problem/{{ problem.problem_number }}">
+						<b>{{ problem.problem_number }}</b>
+					</a>
+				</td>
+				<td>
+					<div class="py-2">
+						<a href="https://www.acmicpc.net/problem/{{ problem.problem_number }}">
+							{{ problem.title }}
+						</a>
+					</div>
+					<div class="pb-2">
+						{% include "leaderboard/components/tag_cloud.html" with tags=problem.tag_names %}
+					</div>
+				</td>
+				<td><b>{{ problem.solved_count }}</b> of {{ problem.submission_count }}</td>
+			</tr>
+		{% endfor %}
+		</tbody>
+	</table>
+</div>
