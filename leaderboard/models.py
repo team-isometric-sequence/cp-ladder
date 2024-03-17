@@ -1,5 +1,7 @@
 from typing import TypedDict
+
 from django.db import models
+from django.utils.functional import cached_property
 
 
 class ProblemFilterType(TypedDict):
@@ -73,7 +75,7 @@ class Problem(models.Model):
 
     tags = models.ManyToManyField("Tag", through="Tagging", verbose_name="태그")
 
-    @property 
+    @cached_property 
     def tag_names(self):
         return list(self.tags.values_list('name', flat=True))
 
