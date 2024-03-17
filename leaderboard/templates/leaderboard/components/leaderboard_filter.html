@@ -1,0 +1,98 @@
+<div class="pb-12 flex justify-between">
+	<div>
+	</div>
+	<div class="flex gap-4">
+		{#% filter for sovledac tier %#}
+		<a 
+			href="?{% if 'tier_desc' in query.order_by %}order_by=tier_asc{% else %}order_by=tier_desc{% endif %}"
+		>
+			<div 
+				class="
+					btn
+					border-transparent
+					{% if 'tier' in query.order_by %}
+						bg-teal-400 text-white hover:bg-teal-300
+					{% else %}
+						text-teal-500 bg-transparent hover:bg-teal-100
+					{% endif %}	
+					text-lg
+					shadow-lg
+				"
+			>
+				AC tier
+				
+				{% if 'tier' in query.order_by %}
+					<span class="block text-white">
+					{% if 'desc' in query.order_by %}
+						{% include 'leaderboard/components/caret_down_icon.html' %}
+					{% else %}
+						{% include 'leaderboard/components/caret_up_icon.html' %}
+					{% endif %}
+					</span>
+				{% endif %}
+			</div>
+		</a>
+
+		{#% filter for number of accepted users %#}
+		<a 
+			href="?{% if 'solved_count_desc' in query.order_by %}order_by=solved_count_asc{% else %}order_by=solved_count_desc{% endif %}"
+		>
+			<div 
+				class="
+					btn
+					border-transparent
+					{% if 'solved_count' in query.order_by %}
+						bg-teal-400 text-white hover:bg-teal-300
+					{% else %}
+						text-teal-500 bg-transparent hover:bg-teal-100
+					{% endif %}	
+					text-lg
+					shadow-lg
+				"
+			>
+				맞힌 사람 수
+				
+				{% if 'solved_count' in query.order_by %}
+					<span class="block text-white">
+					{% if 'desc' in query.order_by %}
+						{% include 'leaderboard/components/caret_down_icon.html' %}
+					{% else %}
+						{% include 'leaderboard/components/caret_up_icon.html' %}
+					{% endif %}
+					</span>
+				{% endif %}
+			</div>
+		</a>
+
+		{#% filter for number of submission %#}
+		<a
+			href="?{% if 'submission_count_desc' in query.order_by %}order_by=submission_count_asc{% else %}order_by=submission_count_desc{% endif %}"
+		>
+			<div 
+				class="
+					btn
+					border-transparent
+					{% if 'submission_count' in query.order_by %}
+						bg-teal-400 text-white hover:bg-teal-300
+					{% else %}
+						text-teal-500 bg-transparent hover:bg-teal-100
+					{% endif %}	
+					text-lg
+					shadow-lg
+				"
+			>
+				제출 수
+				
+				{% if 'submission_count' in query.order_by %}
+					<span class="block text-white">
+					{% if 'desc' in query.order_by %}
+						{% include 'leaderboard/components/caret_down_icon.html' %}
+					{% else %}
+						{% include 'leaderboard/components/caret_up_icon.html' %}
+					{% endif %}
+					</span>
+				{% endif %}
+			</div>
+		</a>
+	</div>
+</div>
