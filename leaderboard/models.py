@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 from typing import TypedDict
+from django.core.paginator import Page, Paginator
 
 from django.db import models
 from django.utils.functional import cached_property
@@ -7,10 +8,64 @@ from django.utils.functional import cached_property
 
 @dataclass 
 class ProblemFilter:
+    PAGINATION_WINDOW_SIZE = 2
+
     allow_unranked: bool
     school: str 
     tag_name: str
     order_by: str
+    page_obj: Page
+
+    @property
+    def page_range(self):
+        return self.page_obj.paginator.page_range
+
+    @property 
+    def has_previous(self):
+        return self.page_obj.has_previous
+
+    @property
+    def has_next(self):
+        return self.page_obj.has_next
+
+    @property 
+    def first_page_query(self):
+        return f"page=1&order_by={self.order_by}"
+
+    @property
+    def last_page_query(self):
+        return f"page={self.page_obj.paginator.num_pages}&order_by={self.order_by}"
+
+    @property 
+    def current_query(self):
+        return f"page={self.page_obj.number}&order_by={self.order_by}"
+
+    @property
+    def previous_page_query(self):
+        return f"page={self.page_obj.previous_page_number}&order_by={self.order_by}"
+
+    @property
+    def next_page_query(self):
+        return f"page={self.page_obj.next_page_number}&order_by={self.order_by}"
+
+    @property 
+    def pagination_window(self):
+        total_pages = self.page_obj.paginator.num_pages
+        current_page = self.page_obj.number 
+
+        start = max(1, current_page - self.PAGINATION_WINDOW_SIZE)
+        end = min(total_pages, current_page + self.PAGINATION_WINDOW_SIZE)
+
+        for i in range(start, end + 1):
+            yield i
+
+    @property 
+    def first_page_is_before_window(self):
+        return 1 not in list(self.pagination_window)
+
+    @property 
+    def last_page_is_after_window(self):
+        return self.page_obj.paginator.num_pages not in list(self.pagination_window)
 
     @property
     def order_by_tier_asc_query(self):

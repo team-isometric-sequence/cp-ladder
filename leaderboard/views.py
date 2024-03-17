@@ -31,9 +31,9 @@ class SchoolLeaderboardView(TemplateView):
 
         paginator = Paginator(problems, 50)
         page_obj = paginator.get_page(page_number)
-        filter = ProblemFilter(**query)
+        filter = ProblemFilter(**{**query, 'page_obj': page_obj})
 
-        context = { 'school': school, 'query': filter, 'page_obj': page_obj}
+        context = { 'school': school, 'filter': filter, 'query': filter, 'page_obj': page_obj}
 
         return context
 
