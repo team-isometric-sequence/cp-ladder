@@ -73,6 +73,14 @@ class Problem(models.Model):
 
     tags = models.ManyToManyField("Tag", through="Tagging", verbose_name="태그")
 
+    @property 
+    def tag_names(self):
+        return list(self.tags.values_list('name', flat=True))
+
+    @property 
+    def badge_asset_path(self):
+        return f'badges/{self.tier}.svg'
+
     class Meta:
         verbose_name = 'problem'
         verbose_name_plural = 'problems'
