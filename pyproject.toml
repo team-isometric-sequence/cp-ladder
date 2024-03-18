@@ -15,6 +15,10 @@ django-browser-reload = "^1.12.0"
 django-q2 = "^1.6.1"
 blessed = "^1.20.0"
 
+[tool.poetry.group.dev.dependencies]
+ruff-lsp = "^0.0.53"
+pyright = "^1.1.354"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
