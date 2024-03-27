@@ -1,7 +1,7 @@
 {% extends "cp_ladder_theme/base.html" %}
 
 {% block content %}
-	<div class="pt-20 pb-24">
+	<div x-data="{ spoilerOpen: $persist(true) }" class="pt-20 pb-24">
 		{% include "leaderboard/components/leaderboard_pagination.html" with filter=filter %}
 
 		{% include "leaderboard/components/leaderboard_filter.html" with query=query %}
