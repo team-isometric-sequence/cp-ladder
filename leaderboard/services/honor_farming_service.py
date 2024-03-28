@@ -71,6 +71,25 @@ def get_problem(boj_problem_id: int) -> Problem:
     return problem
 
 
+def get_problems(boj_problem_ids: list[int]) -> QuerySet[Problem]:
+    already_existing_problems = Problem.objects.filter(problem_number__in=boj_problem_ids)
+    already_existing_problem_ids = already_existing_problems.values_list("problem_number", flat=True)
+
+    if len(already_existing_problem_ids) != len(boj_problem_ids):
+        not_existing_problem_ids = [ problem_number for problem_number in boj_problem_ids if problem_number not in already_existing_problem_ids ]
+
+        problems_to_add = []
+        for problem_number in not_existing_problem_ids:
+            problems_to_add.append(Problem(problem_number=problem_number))
+
+        if problems_to_add:   
+            Problem.objects.bulk_create(problems_to_add)
+
+        already_existing_problems = Problem.objects.filter(problem_number__in=boj_problem_ids)
+
+    return already_existing_problems
+
+
 def get_boj_user(boj_handle: str) -> BojUser:
     user, _ = BojUser.objects.get_or_create(boj_handle=boj_handle)
     return user
@@ -81,6 +100,25 @@ def get_problem_solver(problem_id: int, boj_user_id: int) -> ProblemSolver:
     solver, _ = ProblemSolver.objects.get_or_create(problem_id=problem.pk, boj_user_id=boj_user_id)
     return solver
 
+def get_problem_solvers(problem_ids: list[int], boj_user_id: int) -> QuerySet[ProblemSolver]:
+    problems = get_problems(problem_ids)
+
+    already_existing_problem_solvers = ProblemSolver.objects.filter(problem_id__in=problems, boj_user_id=boj_user_id)
+    already_solved_problem_ids = already_existing_problem_solvers.values_list("problem_id", flat=True)
+
+    if len(already_existing_problem_solvers) != len(problem_ids):
+        not_existing_solved_problem_ids = [ problem_id for problem_id in problem_ids if problem_id not in already_solved_problem_ids ]
+
+        problems_to_add = []
+        for problem_id in not_existing_solved_problem_ids:
+            problems_to_add.append(ProblemSolver(problem_id=problem_id, boj_user_id=boj_user_id))
+
+        if problems_to_add:
+            ProblemSolver.objects.bulk_create(problems_to_add, ignore_conflicts=True)
+
+        already_existing_problem_solvers = ProblemSolver.objects.filter(problem_id__in=problems, boj_user_id=boj_user_id)
+
+    return already_existing_problem_solvers
 
 def update_problem(problem: Problem, **kwargs) -> Problem:
     for key, value in kwargs.items():
