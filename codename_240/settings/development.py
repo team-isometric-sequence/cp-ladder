@@ -1,3 +1,5 @@
+import os 
+
 from .base import *
 
 Q_CLUSTER = {
@@ -9,6 +11,19 @@ Q_CLUSTER = {
     'bulk': 10,
     'orm': 'default'
 }
+
+
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.postgresql_psycopg2",
+        "NAME": "codename_240",
+        "USER": "postgres",
+        "HOST": "localhost",
+        "PASSWORD": os.environ.get("DB_PASSWORD", ""),
+        "PORT": 5432,
+    }
+}
+
 
 LOGGING = {
     "version": 1,
