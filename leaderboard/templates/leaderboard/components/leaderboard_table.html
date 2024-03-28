@@ -1,6 +1,6 @@
 {% load static %}
 {% load cache %}
-<div class="overflow-x-auto">
+<div class="overflow-x-auto mb-16">
 	<table class="table">
 		<thead>
 			<tr class="text-3xl font-extrabold text-black">
@@ -37,4 +37,14 @@
 		{% endfor %}
 		</tbody>
 	</table>
+	{% if not page_obj.object_list %}
+		<div class="hero min-h-screen bg-gray-200 mt-12 rounded-lg">
+		  <div class="hero-content text-center">
+			<div class="max-w-md">
+			  <h1 class="text-4xl font-bold">데이터 없음</h1>
+			  <p class="py-6">백그라운드에서 데이터를 로딩 중입니다. 데이터가 전부 로딩될 때까지 잠시만 기다려주세요</p>
+			</div>
+		  </div>
+		</div>
+	{% endif %}
 </div>
