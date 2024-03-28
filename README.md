@@ -3,7 +3,7 @@
 ## Running from tmuxinator
 
 ```yml
-name: cp_ladder
+name: codename_240
 root: ~/works/
 # This environment variable is used for neovim configuration 
 # (this ensures that opening html file is for django template)
@@ -13,14 +13,14 @@ windows:
   - editor:
       layout: main-vertical
       panes:
-        - cd ./cp-ladder/ && poetry shell
+        - cd ./codename-240/ && poetry shell
   - frontend:
       layout: main-vertical
       panes:
-        - cd ./cp-ladder/ 
+        - cd ./codename-240/ 
   - debugging:
       layout: main-vertical
       panes:
-        - cd ./cp-ladder/ && poetry run python manage.py runserver
-        - cd ./cp-ladder/ && poetry run python manage.py tailwind start
+        - cd ./codename-240/ && poetry run python manage.py runserver
+        - cd ./codename-240/ && poetry run python manage.py tailwind start
 ```

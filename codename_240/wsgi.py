@@ -1,5 +1,5 @@
 """
-WSGI config for cp_ladder project.
+WSGI config for codename_240 project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'cp_ladder.settings.development')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'codename_240.settings.development')
 
 application = get_wsgi_application()

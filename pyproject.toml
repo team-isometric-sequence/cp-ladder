@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "cp-ladder"
+name = "codename-240"
 version = "0.1.0"
 description = "Simple image uploader for personal purpose"
 authors = ["Jaeyeol Lee <rijgndqw012@gmail.com>"]
