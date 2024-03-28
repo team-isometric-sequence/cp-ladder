@@ -27,7 +27,7 @@
 						</a>
 					</div>
 					<div class="pb-2">
-						{% cache 86400 problem.problem_number %}
+						{% cache 86400 tag_cloud problem.problem_number %}
 							{% include "leaderboard/components/tag_cloud.html" with tags=problem.tag_names %}
 						{% endcache %}
 					</div>
