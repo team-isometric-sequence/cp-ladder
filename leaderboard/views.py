@@ -7,7 +7,7 @@ from leaderboard.services.honor_farming_service import list_unsolved_problems, P
 
 # Create your models here.
 class SchoolSelectionView(TemplateView):
-    template_name = "leaderboard/school_selection.html"
+    template_name = "leaderboard/school_selection.jinja"
 
 class SchoolLeaderboardView(TemplateView):
     template_name = "leaderboard/school_leaderboard.html"

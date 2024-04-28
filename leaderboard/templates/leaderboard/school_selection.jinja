@@ -1,0 +1,20 @@
+{% extends "codename_240_theme/base.jinja" %}
+
+{% block content %}
+
+<div class="flex justify-center items-center h-screen">
+	<ul class="grid grid-cols-1 m-0 p-0 mx-auto gap-y-6">
+		{% set schools = [
+			("홍익대학교", "hongik"),
+			("이화여자대학교", "ehwa"),
+			("서강", "sogang"),
+			("숙명여자대학교", "sookmyeong"),
+			("연세대학교", "yonsei")
+		] %}
+		{% for (label, school) in schools %}
+			{% include "leaderboard/components/school_label.jinja" %}
+		{% endfor %}
+	</ul>
+</center>
+
+{% endblock %}

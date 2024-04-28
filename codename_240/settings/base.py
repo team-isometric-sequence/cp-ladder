@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     'tailwind',
     'django_q',
+    'django_jinja',
 
     'codename_240_theme',
     'django_browser_reload',
@@ -64,6 +65,14 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'codename_240.urls'
 
 TEMPLATES = [
+    {
+        "BACKEND": "django_jinja.backend.Jinja2",
+        "APP_DIRS": True,
+        "OPTIONS": {
+           "match_extension": ".jinja",
+           "environment": "jinja.environment",
+        }
+    },
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [],
